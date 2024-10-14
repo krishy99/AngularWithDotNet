@@ -1,0 +1,16 @@
+<h1>Krishna Angular App</h1>
+
+<ul>
+  <li *ngFor= "let user of users">
+    {{user.id}} - {{user.firstName}} - {{user.lastName}}
+  </li>
+</ul>
+<h1>Other For Approach</h1>
+
+<ul>
+  @for (user of users; track $index) {
+    <li>
+      {{$index}}- {{user.id}} - {{user.firstName}} - {{user.lastName}}
+    </li>
+  }
+</ul>

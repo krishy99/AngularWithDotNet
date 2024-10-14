@@ -1,18 +1,18 @@
 ﻿using System.ComponentModel;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API;
-[ApiController]
-[Route("api/[Controller]")]
-public class UsersController : ControllerBase
+[Authorize]
+public class UsersController : BaseAPIController
 {
     private readonly ApplicationDBContext _db;
     public UsersController(ApplicationDBContext _context){
         _db = _context;
     }
-
+    
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers(){
         var lstuserrs = await _db.Users.ToListAsync();
